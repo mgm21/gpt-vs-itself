@@ -1,5 +1,14 @@
 # GPT vs itself
 
+This small library allows for two OpenAI GPT assistants to have a discussion
+about any topic of your choosing.
+
+## How to run
+- Set up your OpenAI API key, as described below
+- Install the packages found in requirements.txt into your environment
+- (Optional) Change the parameters at the top of main.py
+- Run main.py
+
 ## Setting up the API key
 In order to use the OpenAI API, you must have bought credits (as of Dec 2023)
 and produced an API key after purchasing credits.
