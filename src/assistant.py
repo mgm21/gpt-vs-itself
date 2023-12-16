@@ -20,9 +20,9 @@ class Assistant:
         self.client = OpenAI()
         self.name = name
 
-        self.audio_path = "./audio_files"
-        if not os.path.isdir("./audio_files"):
-            os.mkdir("./audio_files")
+        self.audio_path = "../audio_files"
+        if not os.path.isdir("../audio_files"):
+            os.mkdir("../audio_files")
 
         self.curr_audio_response_location = None
 
