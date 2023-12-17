@@ -1,7 +1,6 @@
-import os
-import datetime
 from assistant import Assistant
 from conversation_moderator import ConversationModerator
+import utils
 
 # Parameters
 instruction_str_system_1 = "You are a debater who loves AI. You speak in rhymes. You answer in under 2 sentences."
@@ -15,16 +14,7 @@ audio_model_2 = "tts-1"
 voice_1 = "nova"
 voice_2 = "echo"
 
-# Prepare timestamped results folder
-parent_results_folder = f"../audio_files"
-if not os.path.isdir(parent_results_folder):
-    os.mikdir(parent_results_folder)
-
-now = datetime.datetime.now().strftime("%Y_%m_%d-%H_%M_%S")
-
-results_folder_path = f"{parent_results_folder}/{now}"
-if not os.path.isdir(results_folder_path):
-    os.mkdir(results_folder_path)
+results_folder_path = utils.create_timestamped_results_folder()
 
 assistant1 = Assistant(instruction_str_system=instruction_str_system_1,
                        gpt_model=gpt_model_1,
