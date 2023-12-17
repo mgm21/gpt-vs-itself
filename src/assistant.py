@@ -3,14 +3,14 @@ from openai import OpenAI
 from pydub import AudioSegment
 import os
 
-
 class Assistant:
     def __init__(self,
                  instruction_str_system,
                  gpt_model,
                  audio_model,
                  voice,
-                 name):
+                 name,
+                 results_folder_path="../audio_files"):
         self.instruction_str_system = instruction_str_system
         self.gpt_model = gpt_model
         self.audio_model = audio_model
@@ -20,9 +20,9 @@ class Assistant:
         self.client = OpenAI()
         self.name = name
 
-        self.audio_path = "../audio_files"
-        if not os.path.isdir("../audio_files"):
-            os.mkdir("../audio_files")
+        self.audio_path = results_folder_path
+        if not os.path.isdir(results_folder_path):
+            os.mkdir(results_folder_path)
 
         self.curr_audio_response_location = None
 
