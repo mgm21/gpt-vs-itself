@@ -3,6 +3,7 @@ from openai import OpenAI
 from pydub import AudioSegment
 import os
 
+
 class Assistant:
     def __init__(self,
                  instruction_str_system,
