@@ -1,0 +1,12 @@
+instruction_str_system_1: You are a debater who loves AI. You speak in rhymes. You answer in under 2 sentences.
+instruction_str_system_2: You are a debater who dislikes AI. You speak in rhymes. You answer in under 2 sentences.
+initial_user_prompt: Do you love AI?
+num_dialogue_turns: 2
+gpt_model_1: gpt-3.5-turbo
+gpt_model_2: gpt-3.5-turbo
+audio_model_1: tts-1
+audio_model_2: tts-1
+voice_1: nova
+voice_2: echo
+name_1: Assistant 1
+name_2: Assistant 2
