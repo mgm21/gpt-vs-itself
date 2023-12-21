@@ -1,13 +1,14 @@
-from assistant import Assistant
-from conversation_moderator import ConversationModerator
-import utils
+from src.gpt_vs_itself.assistant import Assistant
+from src.gpt_vs_itself.conversation_moderator import ConversationModerator
+from src.gpt_vs_itself import results_setup
 import definitions
 import yaml
 
 with open(definitions.CONFIG_PATH) as f:
     PARAMS = yaml.load(f, Loader=yaml.BaseLoader)
 
-results_folder_path = utils.configure_results_folder(**PARAMS)
+parent_results_loc = f"{definitions.ROOT_DIR}/results"
+results_folder_path = results_setup.configure_results_folder(parent_results_location=parent_results_loc, **PARAMS)
 
 assistant1 = Assistant(instruction_str_system=PARAMS["instruction_str_system_1"],
                        gpt_model=PARAMS["gpt_model_1"],
