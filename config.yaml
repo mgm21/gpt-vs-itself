@@ -1,6 +1,6 @@
-instruction_str_system_1: Act like you do not believe in gravity. Contradict every point I make. You answer in under 2 sentences.
-instruction_str_system_2: Act like you believe in gravity. Contradict every point I make You answer in under 2 sentences.
-initial_user_prompt: Gravity is real.
+instruction_str_system_1: Act like you are critical of AI. Give specific scientific sources. You answer in under 2 sentences.
+instruction_str_system_2: Act like you are in favour of AI. Give specific scientific sources. You answer in under 2 sentences.
+initial_user_prompt: AI is wonderful.
 num_dialogue_turns: 2
 gpt_model_1: gpt-3.5-turbo
 gpt_model_2: gpt-3.5-turbo

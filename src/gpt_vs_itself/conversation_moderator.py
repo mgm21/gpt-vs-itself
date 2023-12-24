@@ -1,6 +1,7 @@
 import simpleaudio as sa
 from pydub import AudioSegment
 import os
+import numpy as np
 
 
 class ConversationModerator:
@@ -25,41 +26,38 @@ class ConversationModerator:
     def play_conversation(self):
         self.assistant_2.current_str = self.initial_user_prompt
 
+        # Create 'dummy' 50 millisecond silence audio to be able to initially check whether play_obj_2 is done
+        silence = np.zeros((1, 2))
+        play_obj_2 = sa.play_buffer(silence, 1, 2, 44100)
+
         for turn in range(self.num_dialogue_turns):
-            # Produce assistant 1 text and audio response
-            resp_str, resp_audio = self.assistant_1.produce_response_to_msg(msg=self.assistant_2.current_str)
+            play_obj_1 = self._perform_turn(speaker=self.assistant_1,
+                                            opponent=self.assistant_2,
+                                            turn=turn,
+                                            opponent_play_obj=play_obj_2)
 
-            # Save assistant 1 text response
-            self._add_line_to_transcript(message=resp_str, messenger_name=self.assistant_1.name)
-
-            # Save assistant 1 audio response
-            resp_audio_loc = self._save_audio_response(audio_response=resp_audio,
-                                                       turn=turn,
-                                                       speaker_name=self.assistant_1.name)
-
-            # Play assistant 1 audio response
-            wave_obj_1 = sa.WaveObject.from_wave_file(f"{resp_audio_loc}.wav")
-            if turn > 0:
-                play_obj_2.wait_done()
-            play_obj_1 = wave_obj_1.play()
-
-            # Produce assistant 2 text and audio response
-            resp_str, resp_audio = self.assistant_2.produce_response_to_msg(msg=self.assistant_1.current_str)
-
-            # Save assistant 2 text response
-            self._add_line_to_transcript(message=resp_str, messenger_name=self.assistant_2.name)
-
-            # Save assistant 2 audio response
-            resp_audio_loc = self._save_audio_response(audio_response=resp_audio,
-                                                       turn=turn,
-                                                       speaker_name=self.assistant_2.name)
-            
-            # Play assistant 2 audio response
-            wave_obj_2 = sa.WaveObject.from_wave_file(f"{resp_audio_loc}.wav")
-            play_obj_1.wait_done()
-            play_obj_2 = wave_obj_2.play()
+            play_obj_2 = self._perform_turn(speaker=self.assistant_2,
+                                            opponent=self.assistant_1,
+                                            turn=turn,
+                                            opponent_play_obj=play_obj_1)
 
         play_obj_2.wait_done()
+
+    def _perform_turn(self, speaker, opponent, turn, opponent_play_obj):
+        # Produce speaker text and audio response
+        resp_str, resp_audio = speaker.produce_response_to_msg(msg=opponent.current_str)
+        # Save speaker text response
+        self._add_line_to_transcript(message=resp_str, messenger_name=speaker.name)
+        # Save speaker audio response
+        resp_audio_loc = self._save_audio_response(audio_response=resp_audio,
+                                                   turn=turn,
+                                                   speaker_name=speaker.name)
+        # Play speaker audio response
+        speaker_wav_obj = sa.WaveObject.from_wave_file(f"{resp_audio_loc}.wav")
+        opponent_play_obj.wait_done()
+        speaker_play_obj = speaker_wav_obj.play()
+
+        return speaker_play_obj
 
     def _set_up_transcript_file(self):
         with open(self.transcription_file_path, mode="w"):
