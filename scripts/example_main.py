@@ -27,6 +27,7 @@ assistant2 = Assistant(instruction_str_system=PARAMS["instruction_str_system_2"]
 conversation_moderator = ConversationModerator(assistant_1=assistant1,
                                                assistant_2=assistant2,
                                                initial_user_prompt=PARAMS["initial_user_prompt"],
-                                               num_dialogue_turns=int(PARAMS["num_dialogue_turns"]))
+                                               num_dialogue_turns=int(PARAMS["num_dialogue_turns"]),
+                                               results_folder_path=results_folder_path)
 
 conversation_moderator.play_conversation()
