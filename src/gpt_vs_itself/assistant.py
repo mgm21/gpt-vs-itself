@@ -45,6 +45,10 @@ class Assistant:
                 content=response_content_str, role="assistant"
             )
         ]
+
+        # Update the current string var (eventually can stop using this intermediary var in moderator)
+        self.current_str = self.messages[-1]["content"]
+
         print(f"{self.name}: {response_content_str}")
 
         # Produce and save audio response as mp3
@@ -57,7 +61,7 @@ class Assistant:
         self.curr_audio_response_location = f"{self.audio_path}/{turn}-{self.name}"
         audio_response.stream_to_file(f"{self.curr_audio_response_location}.mp3")
 
-        # Convert and save audio response to and as wav
+        # Convert to and save audio response as wav
         mp3_sound = AudioSegment.from_mp3(f"{self.curr_audio_response_location}.mp3")
         mp3_sound.export(f"{self.curr_audio_response_location}.wav", format="wav")
 
