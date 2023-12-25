@@ -56,6 +56,12 @@ class ConversationModerator:
         speaker_wav_obj = sa.WaveObject.from_wave_file(f"{resp_audio_loc}.wav")
         opponent_play_obj.wait_done()
         speaker_play_obj = speaker_wav_obj.play()
+        # Print speaker text response
+        print(f"{speaker.name}: {resp_str}")
+
+        # NB putting the print statement here instead of before wait done allows text and voice to be output at the same
+        # time. If you would like to see the text as soon as it is generated (before the voice has even started), then
+        # place the print statement above the comment # Play speaker audio response.
 
         return speaker_play_obj
 

@@ -45,8 +45,6 @@ class Assistant:
 
         assert self.current_str == response_content_str
 
-        print(f"{self.name}: {response_content_str}")
-
         # Produce and save audio
         audio_response = openai.audio.speech.create(
             model=self.audio_model,
