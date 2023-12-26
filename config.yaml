@@ -1,12 +1,14 @@
-instruction_str_system_1: Act like you are critical of AI. Give specific scientific sources. You answer in under 2 sentences.
-instruction_str_system_2: Act like you are in favour of AI. Give specific scientific sources. You answer in under 2 sentences.
-initial_user_prompt: AI is wonderful.
+
+instruction_str_system_1: Act like you are critical of AI. Answer in one sentence. Cite specific scientific sources.
+instruction_str_system_2: Act like you are in favour of AI. Answer in one sentence. Cite specific scientific sources.
+initial_user_prompt: AI is great.
 num_dialogue_turns: 2
+voice_1: nova
+voice_2: onyx
+name_1: AI-sceptic
+name_2: AI-enthusiast
 gpt_model_1: gpt-3.5-turbo
 gpt_model_2: gpt-3.5-turbo
 audio_model_1: tts-1
 audio_model_2: tts-1
-voice_1: nova
-voice_2: onyx
-name_1: Assistant 1
-name_2: Assistant 2
+

@@ -7,6 +7,10 @@ results/
 *.mp3
 *.wav
 
+# Virtual environments
+venv*
+
+# Files that begin with ignore
 ignore*
 
 

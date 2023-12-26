@@ -12,7 +12,7 @@ def configure_results_folder(parent_results_location, **kwargs):
 def create_timestamped_results_folder(parent_results_location):
     parent_results_folder = parent_results_location
     if not os.path.isdir(parent_results_folder):
-        os.mikdir(parent_results_folder)
+        os.mkdir(parent_results_folder)
 
     now = datetime.datetime.now().strftime("%Y_%m_%d-%H_%M_%S")
 
