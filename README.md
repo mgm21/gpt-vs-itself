@@ -1,5 +1,5 @@
 # GPT vs itself
-This library allows two OpenAI GPT assistants to have a discussion.
+This library allows users to orchestrate, hear, and record a conversation between two OpenAI GPT assistants.
 
 ## Getting started
 This section will guide you through installing and using GPT vs itself locally.
@@ -37,7 +37,9 @@ be functional. Before that, you may run into errors when making API calls.
 ### How to run example script
 1. Edit and save the [config.yaml](config.yaml) file to suit a discussion of your choosing
 
-![](media/config_file.png)
+![](media/config_file_dark.png#gh-dark-mode-only)
+![](media/config_file_light.png#gh-light-mode-only)
+
 
 The new user is encouraged to ignore the last four parameters. These parameters dictate the GPT
 and text-to-speech models. More information on these options are available in the [OpenAI docs]().
@@ -59,7 +61,8 @@ python3 -m scripts.example_main
 You should then see and hear the assistants conversing.
 Note that the screenshot below trims the assistant responses.
 
-![](media/dialogue_in_terminal.png)
+![](media/dialogue_in_terminal_dark.png#gh-dark-mode-only)
+![](media/dialogue_in_terminal_light.png#gh-light-mode-only)
 
 ## License
 [MIT License](LICENSE)
