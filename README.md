@@ -11,8 +11,8 @@ This section will guide you through installing and using GPT vs itself locally.
 1. Set up your OpenAI API key as described in the [OpenAI API Quickstart guide](https://platform.openai.com/docs/quickstart?context=python) (more detail in "Setting up the API key" section below)
 2. Clone this repository to your local machine
     ```sh
-   git clone git@github.com:mgm21/gpt_vs_itself.git
-   cd gpt_vs_itself
+   git clone git@github.com:mgm21/gpt-vs-itself.git
+   cd gpt-vs-itself
    ```
 3. Set up your development environment in the root of the cloned repository (for instance a [virtual environment](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/))
     ```sh
